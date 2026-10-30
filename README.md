@@ -26,14 +26,6 @@ Alternatively, use VS Code Live Server to open the project folder.
 | `index.html` | Semantic page structure and controls |
 | `style.css` | Responsive layout, colours and focus styles |
 | `script.js` | Application state and event handlers |
-| `test.cjs` | Dependency-free Node regression tests |
-| `PRESENTATION.md` | Demo outline and teammate handover |
-
-## Automated checks
-
-Install Node.js 22 or newer, then run `npm test`. No `npm install` is needed.
-The tests execute the actual script in an isolated DOM stub. They cover logic and
-state transitions; visual layout and real browser behaviour require the manual checklist.
 
 ## Manual checks
 
@@ -53,4 +45,3 @@ Pull the latest `main` before starting. Create a branch for your change, use a c
 commit message, and open a pull request describing what changed and how you checked it.
 Keep styling changes in `style.css` and behaviour changes in `script.js` where practical.
 
-See `PRESENTATION.md` for suggested preparation before Saturday, 31 October 2026.
