@@ -87,8 +87,8 @@ document.querySelectorAll("[data-key]").forEach(button => {
 });
 document.addEventListener("keydown", event => {
   if (event.ctrlKey || event.metaKey || event.altKey) return;
-  // Preserve native Enter/Space activation when a button has keyboard focus.
-  if (event.target.tagName === "BUTTON" && ["Enter", " "].includes(event.key)) return;
+  // Space activates the focused button; Enter always evaluates the calculation.
+  if (event.target.tagName === "BUTTON" && event.key === " ") return;
   const key = event.key === "Escape" || event.key === "Delete" ? "Clear" : event.key === "Enter" ? "=" : event.key;
   if (/^[0-9.+*/=-]$/.test(key) || ["Clear", "Backspace"].includes(key)) {
     event.preventDefault();
