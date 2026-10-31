@@ -1,25 +1,30 @@
 *{box-sizing:border-box}
-body{margin:0;background:#ffffff;color:#541025;font:18px/1.6 system-ui,sans-serif}
+body{margin:0;background:linear-gradient(160deg,#fff8fa,#ffe1e8) fixed;color:#541025;font:18px/1.6 system-ui,sans-serif}
 main{width:min(92%,760px);margin:6vh auto}
 header{margin-bottom:2rem}
-h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.1;margin:.5rem 0}
+h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.1;margin:.5rem 0;color:#dc143c}
 small{letter-spacing:.12em;text-transform:uppercase;color:#8c2942}
-.panel{background:#ffffff;padding:clamp(1rem,4vw,2rem);border-radius:20px;box-shadow:0 10px 40px #dc143c18}
+.panel{background:#ffffff;padding:clamp(1rem,4vw,2rem);border:1px solid #dc143c;border-radius:20px;box-shadow:0 10px 40px #dc143c18}
 button{font:inherit;cursor:pointer;border:1px solid #db9aaa;background:#ffffff;color:#541025;border-radius:10px;padding:.8rem 1.2rem;min-height:48px}
-button:hover{background:#fff0f3}
+button:hover:not(:disabled){background:#fff0f3}
 button:focus-visible{outline:3px solid #b81034;outline-offset:3px}
-button:disabled{cursor:default;opacity:.5}
+button:disabled{cursor:default;opacity:.45}
 .primary{background:#dc143c;color:white}
-.primary:hover{background:#b81034}
-.actions{display:flex;gap:.7rem;flex-wrap:wrap}
-.score{font-size:1.6rem;font-weight:700}
+.primary:hover:not(:disabled){background:#b81034}
 footer{font-size:.9rem;color:#8c2942;margin-top:1.5rem}
-.calculator{max-width:430px;margin:auto}
-#display{display:block;text-align:right;font-size:clamp(1.4rem,5vw,2.3rem);background:#dc143c;color:#fff;border-radius:10px;padding:1rem;overflow-wrap:anywhere}
-.keypad{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
-.keypad button{padding:.7rem .2rem}
-#message{font-size:.85rem;min-height:2.8em}
-
-h1 { color: #dc143c; }
-.panel { border: 1px solid #dc143c; }
-#display { background: #dc143c; color: #ffffff; }
+.calculator{max-width:430px;margin:auto;background:#2a0b16;border-color:#4d1a2c;box-shadow:0 24px 60px #dc143c40}
+#display{display:block;height:5rem;padding:1rem 1.2rem;line-height:3rem;text-align:right;white-space:nowrap;overflow:hidden;font-size:clamp(1.8rem,7vw,2.8rem);font-variant-numeric:tabular-nums;background:#170610;color:#ffffff;border-radius:16px;box-shadow:inset 0 2px 10px #000000a0}
+#message{font-size:.85rem;min-height:2.8em;margin:.8rem .2rem 1rem;color:#f2b8c6}
+.keypad{display:grid;grid-template-columns:repeat(8,1fr);gap:.6rem}
+.keypad button{grid-column:span 2;min-height:58px;padding:.7rem .2rem;font-size:1.25rem;font-weight:600;background:#43202d;border-color:#5b3040;color:#ffffff;transition:background .15s,transform .05s}
+.keypad button:hover:not(:disabled){background:#57303e}
+.keypad button:active:not(:disabled){transform:scale(.97)}
+.keypad button:focus-visible{outline-color:#ffd08a}
+.keypad .wide{grid-column:span 3;background:#6b2c41;border-color:#82405a;font-size:1.1rem}
+.keypad .wide:hover:not(:disabled){background:#7d3850}
+.keypad .zero{grid-column:span 4}
+.keypad .primary{background:#dc143c;border-color:#f0426a}
+.keypad .primary:hover:not(:disabled){background:#f0284f}
+.keypad .equals{background:linear-gradient(135deg,#ffc15e,#ff8a00);border-color:#ffd08a;color:#3a1500;font-size:1.6rem;font-weight:800;box-shadow:0 6px 20px #ff8a0066}
+.keypad .equals:hover:not(:disabled){background:linear-gradient(135deg,#ffd07f,#ffa033)}
+@media (prefers-reduced-motion:reduce){.keypad button{transition:none}}
