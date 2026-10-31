@@ -21,9 +21,20 @@ let waitingForNumber = false;
 let hasError = false;
 const display = document.querySelector("#display");
 const message = document.querySelector("#message");
+const symbols = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+function fitDisplay() {
+  // Shrink the font until the whole number fits, so long results are never cut off.
+  display.style.fontSize = "";
+  let size = parseFloat(getComputedStyle(display).fontSize);
+  while (display.scrollWidth > display.clientWidth && size > 12) {
+    size -= 1;
+    display.style.fontSize = `${size}px`;
+  }
+}
 function render() {
   display.textContent = displayValue;
   document.querySelector('[data-key="."]').disabled = !waitingForNumber && displayValue.includes(".");
+  fitDisplay();
 }
 function clear() {
   displayValue = "0";
@@ -63,7 +74,7 @@ function handleKey(key) {
       else firstNumber = Number(displayValue);
       operator = key;
       waitingForNumber = true;
-      message.textContent = `${displayValue} ${operator} …`;
+      message.textContent = `${displayValue} ${symbols[operator]} …`;
     } else if (key === "=") {
       if (!operator || waitingForNumber) return;
       calculate();
@@ -95,4 +106,5 @@ document.addEventListener("keydown", event => {
     handleKey(key);
   }
 });
+window.addEventListener("resize", fitDisplay);
 render();
