@@ -46,9 +46,10 @@ function clear() {
   render();
 }
 function calculate() {
-  // Round the visible result to 12 significant figures to keep it readable.
+  // Round to 12 significant figures, then to at most 4 decimals.
   firstNumber = operate(operator, firstNumber, Number(displayValue));
   firstNumber = Number(firstNumber.toPrecision(12));
+  firstNumber = Number(firstNumber.toFixed(4));
   displayValue = String(firstNumber);
 }
 function handleKey(key) {
@@ -62,9 +63,13 @@ function handleKey(key) {
       if (waitingForNumber) { displayValue = "0"; waitingForNumber = false; }
       if (key === ".") {
         if (!displayValue.includes(".")) displayValue += ".";
-      } else if (displayValue.replace(/[.-]/g, "").length < 12) {
-        displayValue = displayValue === "0" ? key : displayValue + key;
-      }
+     } else if (displayValue.replace(/[.-]/g, "").length < 12) {
+  if ((displayValue.split(".")[1] || "").length >= 4) {
+    message.textContent = "Maximum 4 decimals.";
+  } else {
+    displayValue = displayValue === "0" ? key : displayValue + key;
+  }
+}
     } else if (key === "Backspace") {
       if (!waitingForNumber) displayValue = displayValue.slice(0, -1);
       if (!displayValue || displayValue === "-") displayValue = "0";
