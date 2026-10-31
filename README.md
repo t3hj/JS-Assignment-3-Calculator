@@ -30,7 +30,7 @@ Alternatively, use VS Code Live Server to open the project folder.
 ## Manual checks
 
 - Enter `12 + 7 - 5 * 3 =`; expect 42.
-- Enter `1 / 3 =`; expect 0.333333333333 without display overflow.
+- Enter `1 / 3 =`; expect 0.3333 without display overflow.
 - Enter `0.1 + 0.2 =`; expect 0.3.
 - Press `=`, then `2 + =`; expect no crash or invented second operand.
 - Enter `2 + * 3 =`; expect 6 (operator replacement).
